@@ -425,7 +425,7 @@
 }
 
 .mxd-promo__bg {
-  background-image: url(https://dummyimage.com/1400x900/838383/5d5d5d);
+  background-image: url('../image/above-rinaldi-desktop-homepage-lets-build.jpg');
 }
 
 .preview-image-1 {
@@ -769,7 +769,7 @@ html.lenis, html.lenis body {
   padding-bottom: 14rem;
 }
 .mxd-section.padding-pre-grid {
-  padding-bottom: 11rem;
+  padding-bottom: 6rem;
 }
 .mxd-section.padding-pre-grid.mobile-grid-s {
   padding-bottom: 12.5rem;
@@ -1936,7 +1936,7 @@ h2.permanent-dark {
 }
 @media only screen and (min-width: 1600px) {
   h2 {
-    font-size: 7rem;
+    font-size: 5rem;
   }
   h2.h2-small {
     font-size: 7rem;
@@ -2203,7 +2203,7 @@ p.t-semibold {
 }
 
 .mxd-manifest {
-  font: normal var(--fw-regular) 2.8rem/1.6 var(--_font-accent);
+  font: normal var(--fw-regular) 1.5rem/1.8 var(--_font-accent);
   color: var(--t-bright);
 }
 @media only screen and (min-width: 768px) {
@@ -3045,6 +3045,12 @@ p.t-semibold {
   height: 3.3rem;
   line-height: 3.3rem;
   overflow: hidden;
+
+  @media only screen and (max-width: 768px) {
+    .btn-anim__block{
+      font-size: 15px;
+    }
+  }
 }
 .btn-anim.btn-anim-medium .btn-caption {
   height: 2.3rem;
@@ -5015,6 +5021,12 @@ form textarea:required:valid {
   display: block;
   margin-bottom: 1.4rem;
   height: 460px;
+
+  @media only screen and (max-width: 768px) {
+    > div {
+      border-radius: var(--_radius-m) !important;
+    }
+  }
 }
 @media only screen and (min-width: 768px) {
   .mxd-project-item__media {
@@ -5483,7 +5495,7 @@ form textarea:required:valid {
   width: 100%;
   width: -moz-calc(100% - 11.6rem);
   width: calc(100% - 11.6rem);
-  padding-top: 3rem;
+  padding-top: 4.5rem;
   z-index: 101;
   -webkit-transform: scaleY(1);
      -moz-transform: scaleY(1);
@@ -5526,6 +5538,16 @@ form textarea:required:valid {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
+
+  .mxd-logo__icon {
+    max-width: 180px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .mxd-logo__icon {
+      max-width: 358px;
+    }
+  }
 }
 
 .mxd-header__controls {
@@ -6258,9 +6280,9 @@ form textarea:required:valid {
 
 .mxd-promo__bg {
   position: absolute;
-  top: -4rem;
-  right: -10rem;
-  width: 70%;
+  top: 0;
+  right: 0;
+  width: 100%;
   height: -moz-calc(100% + 4rem);
   height: calc(100% + 4rem);
   background-repeat: no-repeat;
@@ -6273,7 +6295,7 @@ form textarea:required:valid {
     background-position: center;
     top: 0;
     right: 0;
-    width: 50%;
+    width: 100%;
   }
 }
 
@@ -6291,6 +6313,12 @@ form textarea:required:valid {
           flex-direction: column;
   gap: 6rem;
   margin: 12.2rem 0 14rem 0;
+
+  .btn-additional {
+    background-color: #52AE93;
+    border-color: #52AE93;
+    color: #FFFFFF;
+  }
 }
 @media only screen and (min-width: 768px) {
   .mxd-promo__content {
@@ -6299,7 +6327,7 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 1600px) {
   .mxd-promo__content {
-    margin: 17.6rem 0 20rem 0;
+    margin: 37.6rem 0 20rem 0;
   }
 }
 
@@ -6341,18 +6369,19 @@ form textarea:required:valid {
 }
 
 .mxd-promo__caption {
-  font: normal var(--fw-medium) 4.4rem/1.1 var(--_font-accent);
+  font: normal var(--fw-medium) 3.4rem/1.1 var(--_font-accent);
+  font-family: "SpaceMono";
   letter-spacing: -0.06rem;
   color: var(--t-bright);
 }
 @media only screen and (min-width: 768px) {
   .mxd-promo__caption {
-    font-size: 8rem;
+    font-size: 5rem;
   }
 }
 @media only screen and (min-width: 1400px) {
   .mxd-promo__caption {
-    font-size: 10rem;
+    font-size: 7rem;
   }
 }
 
@@ -6479,8 +6508,8 @@ form textarea:required:valid {
   padding: 0 3rem;
   color: var(--t-bright);
   z-index: -1;
-  padding-top: 12.5rem;
-  margin-bottom: 2rem;
+  padding-top: 6.5rem;
+  margin-bottom: 6.5rem;
 }
 .mxd-footer__fullwidth-text.personal {
   margin-bottom: 3rem;
@@ -6489,7 +6518,7 @@ form textarea:required:valid {
   .mxd-footer__fullwidth-text {
     padding: 0 6rem;
     padding-top: 10.5rem;
-    margin-bottom: 0;
+    margin-bottom: 10.5rem;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -6501,7 +6530,7 @@ form textarea:required:valid {
   .mxd-footer__fullwidth-text {
     padding: 0 9rem;
     padding-top: 11.1rem;
-    margin-bottom: -1rem;
+    margin-bottom: 11.1rem;
   }
 }
 
@@ -18586,6 +18615,7 @@ form textarea:required:valid {
 @media only screen and (min-width: 1600px) {
   .mxd-services-stack__info.width-60 {
     max-width: 610px;
+    transform: translateY(-30%);
   }
   .mxd-services-stack__info.width-70 {
     max-width: 490px;
@@ -18735,11 +18765,18 @@ form textarea:required:valid {
 @media only screen and (min-width: 1200px) {
   .services-stack__image .service-img {
     position: absolute;
-    right: 0;
+    /* right: 0;
     bottom: -5%;
     max-height: none;
     height: 110%;
-    width: auto;
+    width: auto; */
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    top: 45%;
+    right: 10%;
+    max-height: 100%;
+    max-width: 30%;
   }
 }
 
