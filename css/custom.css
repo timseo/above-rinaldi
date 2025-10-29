@@ -301,3 +301,11 @@ h2.opposite {
     color: #fff;
     margin-top: 20px;
 }
+
+.hover-reveal__content{
+    height: auto !important;
+    border-radius: 15px;
+}
+.hover-reveal__content img{
+    border-radius: 15px;
+}
