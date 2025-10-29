@@ -308,4 +308,5 @@ h2.opposite {
 }
 .hover-reveal__content img{
     border-radius: 15px;
+    transform-origin: center;
 }

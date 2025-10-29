@@ -1099,7 +1099,7 @@ for(let i = 0; i < link.length; i++) {
   link[i].addEventListener('mouseleave', (e) => {
     linkHoverReveal[i].style.opacity = 0;
     linkHoverReveal[i].style.transform = `translate(-80%, -50%)`;
-    linkImages[i].style.transform = 'scale(1, 1.4)';
+    linkImages[i].style.transform = 'scale(1.2, 1.2)';
   })
 }
 // --------------------------------------------- //
