@@ -1909,7 +1909,7 @@ h1 {
   color: var(--accent);
 }
 
-h2 {
+h2,.h2 {
   font: normal var(--fw-medium) 4.4rem/1.1 var(--_font-accent);
   letter-spacing: -0.06rem;
   color: var(--t-bright);
@@ -1924,7 +1924,7 @@ h2.permanent-dark {
   color: var(--pt-t-dark-bright);
 }
 @media only screen and (min-width: 768px) {
-  h2 {
+  h2,.h2 {
     font-size: 7rem;
   }
   h2.h2-small {
@@ -1935,7 +1935,7 @@ h2.permanent-dark {
   }
 }
 @media only screen and (min-width: 1600px) {
-  h2 {
+  h2,.h2 {
     font-size: 5rem;
   }
   h2.h2-small {

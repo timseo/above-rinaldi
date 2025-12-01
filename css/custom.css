@@ -336,3 +336,54 @@ transform: translate(-50%, -50%) rotate(-60deg);
         width: 32.5px;
     }
 }
+
+.h2{
+    font-family: "SpaceMono";
+}
+.about-page-banner .mxd-manifest{
+    margin-top: 40px;
+    line-height: 1.4;
+}
+
+.about-our-mission .mxd-awards-list__inner{
+    padding: 60px 0;
+}
+.about-our-mission .mxd-awards-list__icon{
+    transform: none;
+    margin-right: 30px;
+    width: 40%;
+}
+.about-our-mission img.icon{
+    max-width: 150px;
+    border-radius: 100%;
+}
+.contact-banner .btn-line-headline{
+    font-family: "SpaceMono";
+    font-size: 44px;
+    color: #E2B644;
+    i{
+        color: #E2B644;
+        font-size: inherit;
+    }
+}
+.contact-banner .btn-line-headline:hover i{
+    color: #9f8be7;
+}
+@media only screen and (min-width: 768px) {
+    .contact-banner .btn-line-headline{
+        font-size: 70px;
+    }
+}
+@media only screen and (min-width: 1600px) {
+    .contact-banner .btn-line-headline{
+        font-size: 50px;
+    }
+}
+form input, form textarea{
+    font-family: "SpaceMono";
+    color: #000;
+}
+.contact-form button{
+    background-color: #E05829;
+    border-color: #E05829;
+}
