@@ -1136,6 +1136,7 @@ if (!testimonialsSlider) {
 // Swiper Slider - Testimonials #01 End
 // --------------------------------------------- //
 
+
 // --------------------------------------------- //
 // Swiper Slider - Testimonials #02 Start
 // --------------------------------------------- //
@@ -1165,6 +1166,32 @@ if (!testimonialsSlider2) {
 };
 // --------------------------------------------- //
 // Swiper Slider - Testimonials #02 End
+// --------------------------------------------- //
+
+// --------------------------------------------- //
+// Swiper Slider - services #02 Start
+// --------------------------------------------- //
+const servicesslider = document.querySelector("services-slider");
+
+if (!servicesslider) {
+  const swiper = new Swiper('.services-slider', {
+    slidesPerView: 'auto',
+    grabCursor: true,
+    spaceBetween: 20,
+    autoplay: false,
+    delay: 3000,
+    speed: 1000,
+    loop: false,
+    parallax: true,
+    loopFillGroupWithBlank: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+};
+// --------------------------------------------- //
+// Swiper Slider - services #02 End
 // --------------------------------------------- //
 
 // --------------------------------------------- //
