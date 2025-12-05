@@ -585,7 +585,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--accent);
+  background-color: #52AE93;
   border-radius: var(--_radius-s);
 }
 
