@@ -750,6 +750,7 @@ if(document.querySelector(".stack-item")) {
 // --------------------------------------------- //
 let elements = document.querySelectorAll(".btn-anim .btn-caption");
 
+
 elements.forEach((element) => {
   let innerText = element.innerText;
   element.innerHTML = "";
