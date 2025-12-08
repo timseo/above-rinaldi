@@ -424,6 +424,7 @@ $(function() {
     let menuItem      = $(this).find(".main-menu__item");
     let videoEl       = $(this).find(".menu-promo__video");
     let fadeInEl      = $(this).find(".menu-fade-in");
+    let nwrap         = $(this);
     let flipDuration = 0.6;
 
     function flip(forwards) {
@@ -438,6 +439,7 @@ $(function() {
 
     let tl = gsap.timeline({ paused: true });
     tl.set(menuWrapEl, { display: "flex" });
+    tl.set(nwrap, { display: "inline" });
     tl.from(menuBaseEl, { 
       opacity: 0,
       duration: flipDuration,
@@ -472,6 +474,7 @@ $(function() {
         if (open) {
           tl.play();
           hamburgerEl.addClass("nav-open");
+          nwrap.css({display: "inline-block"});
         } else {
           tl.reverse();
           hamburgerEl.removeClass("nav-open");

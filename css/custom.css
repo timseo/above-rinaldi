@@ -57,6 +57,16 @@ h2.opposite {
     font-size: 3.5rem;
 }
 
+.mxd-nav__wrap{
+    left: auto;
+}
+nav.mxd-nav__wrap[style="display: inline;"]{
+    left: 0;
+}
+.mxd-nav__contain{
+    padding-left: 0;
+}
+
 .custom-home-banner{
     height: auto !important;
 }
@@ -218,9 +228,8 @@ h2.opposite {
 }
 .custom-services-section .mxd-block__content:hover .mxd-manifest__controls{
     display: none;
-}
-.custom-services-section .mxd-block__content:hover .mxd-manifest__controls{
-    display: none;
+    /* position: absolute;
+    bottom: 60px; */
 }
 @media only screen and (min-width: 1200px){
 .custom-services-section .mxd-block__content:hover{
@@ -230,15 +239,16 @@ h2.opposite {
     z-index: 99;
     transition: .3s ease;
     padding-bottom: 60px;
+    max-height: 85vh;
 }
 .custom-services-section .col-12:nth-child(2) .mxd-block__content:hover{
     right: calc(100% + 30px) !important;
 }
 .custom-services-section .col-12:nth-child(3) .mxd-block__content:hover{
-    bottom: calc(100% + 30px) !important;
+    bottom: calc(85vh - 100%) !important;
 }
 .custom-services-section .col-12:nth-child(4) .mxd-block__content:hover{
-    bottom: calc(100% + 30px) !important;
+    bottom: calc( 85vh - 100% ) !important;
     right: calc(100% + 30px) !important;
 }
 .custom-services-section .mxd-block__content:hover p{
@@ -576,4 +586,19 @@ form input, form textarea{
     .footer-nav__link .btn-caption {
         height: 2rem;
     }
+}
+
+.post-secondary__thumb{
+    padding-top: 95%;
+    position: relative;
+    overflow: hidden;
+    height: auto !important;
+}
+.post-secondary__thumb img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
