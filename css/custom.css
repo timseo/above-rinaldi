@@ -202,7 +202,6 @@ nav.mxd-nav__wrap[style="display: inline;"]{
 }
 .custom-services-section .mxd-block__content p{
     display: none;
-    padding-bottom: 100px;
 }
 .custom-services-section .mxd-block__content a{
     color: #fff;
@@ -286,6 +285,10 @@ nav.mxd-nav__wrap[style="display: inline;"]{
     .custom-services-section .mxd-block__content:hover .block-bottom a{
         opacity: 1 !important;
         display: inline-flex;
+    }
+    .custom-services-section .block-bottom{
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 @media only screen and (max-width: 767px){
