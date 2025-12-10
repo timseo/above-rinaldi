@@ -1181,10 +1181,10 @@ if (!servicesslider) {
     slidesPerView: 'auto',
     grabCursor: true,
     spaceBetween: 20,
-    autoplay: false,
+    autoplay: true,
     delay: 3000,
     speed: 1000,
-    loop: false,
+    loop: true,
     parallax: true,
     loopFillGroupWithBlank: true,
     navigation: {
