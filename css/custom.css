@@ -620,3 +620,8 @@ form input, form textarea{
     left: 0;
     top: 0;
 }
+
+/* Hide Terms & conditions links in footer */
+.footer-blocks__links a[href="javascript:void(0);"] {
+    display: none !important;
+}
