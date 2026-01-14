@@ -625,3 +625,8 @@ form input, form textarea{
 .footer-blocks__links a[href="javascript:void(0);"] {
     display: none !important;
 }
+
+#contact-form {
+display:none!important;
+}
+

@@ -317,7 +317,7 @@
                           </div>
                         </form>
                         <!-- Contact Form End -->
-          
+                          <iframe src="https://forms.monday.com/forms/embed/0c5b3b84e873ce94cf8bc03722f6d913?hide_title=true" width="900" height="1020" style=""></iframe>
                       </div>
                     </div>
                   </div>
@@ -627,7 +627,21 @@
       statsCounter3.start();
       statsCounter4.start();
     </script>
-    
+<script>
+  const observer = new MutationObserver(() => {
+    const title = document.querySelector('h1[data-testid="form-title"]');
+    if (title) {
+      title.style.display = "none";
+      observer.disconnect(); // stop once found
+    }
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+</script>
+
   </body>
 
 </html>
