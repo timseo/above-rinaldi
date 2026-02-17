@@ -83,10 +83,10 @@ function startLoader() {
   }
   updateCounter();
 }
-startLoader();
+// startLoader();
 
 imgLoad.on('done', instance => {
-  hideLoader();
+  // hideLoader();
   pageAppearance();
 });
 
@@ -109,9 +109,10 @@ function pageAppearance() {
     delay: 0.8,
     stagger: 0.08
   }, '>-=1.1');
-  gsap.set(fadeInItems, { opacity: 0 });
-  gsap.to(fadeInItems, { duration: 0.8, ease: 'none', opacity: 1, delay: 3.2 });
+  // gsap.set(fadeInItems, { opacity: 0 });
+  // gsap.to(fadeInItems, { duration: 0.8, ease: 'none', opacity: 1, delay: 3.2 });
 }
+
 // --------------------------------------------- //
 // Loader & Loading Animation End
 // --------------------------------------------- //
