@@ -8,41 +8,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Setup SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-        chmod 600 ~/.ssh/id_ed25519
-        ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
 
-    - name: Deploy to Bluehost
-      env:
-        SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
-        SSH_PORT: ${{ secrets.SSH_PORT }}
-      run: |
-        # Clean target directory
-        ssh -p $SSH_PORT $SSH_USERNAME@$SSH_HOST \
-        "cd public_html/italianspiritsco.com && rm -rf *"
+          # Hardcode host to avoid secret formatting issues
+          ssh-keyscan -H 162.241.217.63 >> ~/.ssh/known_hosts
 
-        # Create temp folder
-        mkdir -p deploy_temp
-
-        # Copy files excluding unwanted folders
-        rsync -av \
-          --exclude='.git/' \
-          --exclude='.github/' \
-          --exclude='node_modules/' \
-          --exclude='*.log' \
-          --exclude='.env' \
-          --exclude='deploy_temp/' \
-          ./ deploy_temp/
-
-        # Upload files
-        scp -P $SSH_PORT -r deploy_temp/* \
-          $SSH_USERNAME@$SSH_HOST:/home3/chamelk9/public_html/italianspiritsco.com/
-
-        rm -rf deploy_temp
+      - name: Deploy to Bluehost
+        run: |
+          rsync -av --delete \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='node_modules/' \
+            --exclude='*.log' \
+            --exclude='.env' \
+            -e "ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes" \
+            ./ chamelk9@162.241.217.63:/home3/chamelk9/public_html/website_0e9c7b94/
