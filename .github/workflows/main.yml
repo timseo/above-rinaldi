@@ -15,21 +15,18 @@ jobs:
         run: |
           mkdir -p ~/.ssh
 
-          # Write private key safely (preserves formatting)
           printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
 
-          # Create strict SSH config (forces single identity)
           printf "Host bluehost\n" >> ~/.ssh/config
           printf "  HostName %s\n" "${{ secrets.SSH_HOST }}" >> ~/.ssh/config
           printf "  User %s\n" "${{ secrets.SSH_USERNAME }}" >> ~/.ssh/config
-          printf "  Port %s\n" "${{ secrets.SSH_PORT }}" >> ~/.ssh/config
+          printf "  Port 22\n" >> ~/.ssh/config
           printf "  IdentityFile ~/.ssh/deploy_key\n" >> ~/.ssh/config
           printf "  IdentitiesOnly yes\n" >> ~/.ssh/config
 
           chmod 600 ~/.ssh/config
 
-          # Add server to known_hosts
           ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
       - name: Deploy Files
