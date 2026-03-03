@@ -11,18 +11,25 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Setup SSH
+      - name: Setup SSH (Force Single Key)
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          cat <<EOF >> ~/.ssh/config
+          Host bluehost
+            HostName ${{ secrets.SSH_HOST }}
+            User ${{ secrets.SSH_USERNAME }}
+            Port ${{ secrets.SSH_PORT }}
+            IdentityFile ~/.ssh/deploy_key
+            IdentitiesOnly yes
+          EOF
+
+          chmod 600 ~/.ssh/config
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy Files
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
         run: |
           rsync -av --delete \
             --exclude='.git/' \
@@ -30,5 +37,5 @@ jobs:
             --exclude='node_modules/' \
             --exclude='*.log' \
             --exclude='.env' \
-            -e "ssh -p $SSH_PORT -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes" \
-            ./ $SSH_USERNAME@$SSH_HOST:/home3/chamelk9/public_html/website_0e9c7b94/
+            -e "ssh bluehost" \
+            ./ bluehost:/home3/chamelk9/public_html/website_0e9c7b94/
