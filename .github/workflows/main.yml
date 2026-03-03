@@ -8,34 +8,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+    - name: Checkout Code
+      uses: actions/checkout@v3
 
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
+        ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-          printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
+    - name: Deploy to Bluehost
+      env:
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+        SSH_PORT: ${{ secrets.SSH_PORT }}
+      run: |
+        # Clean target directory
+        ssh -p $SSH_PORT $SSH_USERNAME@$SSH_HOST \
+        "cd public_html/italianspiritsco.com && rm -rf *"
 
-          printf "Host bluehost\n" >> ~/.ssh/config
-          printf "  HostName %s\n" "${{ secrets.SSH_HOST }}" >> ~/.ssh/config
-          printf "  User %s\n" "${{ secrets.SSH_USERNAME }}" >> ~/.ssh/config
-          printf "  Port 22\n" >> ~/.ssh/config
-          printf "  IdentityFile ~/.ssh/deploy_key\n" >> ~/.ssh/config
-          printf "  IdentitiesOnly yes\n" >> ~/.ssh/config
+        # Create temp folder
+        mkdir -p deploy_temp
 
-          chmod 600 ~/.ssh/config
+        # Copy files excluding unwanted folders
+        rsync -av \
+          --exclude='.git/' \
+          --exclude='.github/' \
+          --exclude='node_modules/' \
+          --exclude='*.log' \
+          --exclude='.env' \
+          --exclude='deploy_temp/' \
+          ./ deploy_temp/
 
-          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+        # Upload files
+        scp -P $SSH_PORT -r deploy_temp/* \
+          $SSH_USERNAME@$SSH_HOST:/home3/chamelk9/public_html/italianspiritsco.com/
 
-      - name: Deploy Files
-        run: |
-          rsync -av --delete \
-            --exclude='.git/' \
-            --exclude='.github/' \
-            --exclude='node_modules/' \
-            --exclude='*.log' \
-            --exclude='.env' \
-            -e "ssh bluehost" \
-            ./ bluehost:/home3/chamelk9/public_html/website_0e9c7b94/
+        rm -rf deploy_temp
